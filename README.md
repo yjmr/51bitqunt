@@ -1,7 +1,9 @@
 # 51bitqunt
 the code for 51bitquant video
 
-## Python数字数字货币量化代码
+## Python数字货币量化交易代码
+
+## python量化视频量化代码
 
 ## Python比特币量化交易视频课程的代码
 
