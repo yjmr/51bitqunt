@@ -49,36 +49,35 @@ df = df[df['open_time'] >= pd.to_datetime('2019-06-07 15:00:00')]  # 筛选时�
 
 # 第一种方法，通过Series进行转换.
 # 将时间周期相关的列设置为索引index
-# df.set_index('open_time', inplace=True)
-#
-# # 周期转换方法：resample
-# rule_cycle = '1D'  # rule_cycle='5T'：意思是5分钟，意味着转变为5分钟数据  # 15T  1H  1D 一天
-#
-# cycle_df = pd.DataFrame()
-# cycle_df['close'] = df['close'].resample(rule=rule_cycle).last()  # last：取这5分钟的最后一行数据
-# # # 开、高、低的价格，成交量
-# cycle_df['open'] = df['open'].resample(rule=rule_cycle).first()  # 五分钟内的第一个值就是开盘价
-# cycle_df['high'] = df['high'].resample(rule=rule_cycle).max()  # 五分钟内的最高价就是High
-# cycle_df['low'] = df['low'].resample(rule=rule_cycle).min()  # 五分钟内的最低价就是low
-# cycle_df['volume'] = df['volume'].resample(rule=rule_cycle).sum()  # 五分钟内的成交量的综合就是成交量
-#
-# print(cycle_df)
-# exit()
+df.set_index('open_time', inplace=True)
+# 周期转换方法：resample
+rule_cycle = '1D'  # rule_cycle='5T'：意思是5分钟，意味着转变为5分钟数据  # 15T  1H  1D 一天
+
+cycle_df = pd.DataFrame()
+cycle_df['close'] = df['close'].resample(rule=rule_cycle).last()  # last：取这5分钟的最后一行数据
+# # 开、高、低的价格，成交量
+cycle_df['open'] = df['open'].resample(rule=rule_cycle).first()  # 五分钟内的第一个值就是开盘价
+cycle_df['high'] = df['high'].resample(rule=rule_cycle).max()  # 五分钟内的最高价就是High
+cycle_df['low'] = df['low'].resample(rule=rule_cycle).min()  # 五分钟内的最低价就是low
+cycle_df['volume'] = df['volume'].resample(rule=rule_cycle).sum()  # 五分钟内的成交量的综合就是成交量
+
+print(cycle_df)
+exit()
 
 
 # 通过DataFrame直接进行转换.
 
-# rule_cycle = '5T'
-# df.set_index('open_time', inplace=True)
-# cycle_df1 = df.resample(rule=rule_cycle).agg(
-#     {'open': 'first',
-#      'high': 'max',
-#      'low': 'min',
-#      'close': 'last',
-#      'volume': 'sum',
-#      })
-#
-# print(cycle_df1)
+rule_cycle = '5T'
+df.set_index('open_time', inplace=True)
+cycle_df1 = df.resample(rule=rule_cycle).agg(
+    {'open': 'first',
+     'high': 'max',
+     'low': 'min',
+     'close': 'last',
+     'volume': 'sum',
+     })
+
+print(cycle_df1)
 # exit()
 
 # 通过DataFrame直接进行转换.
