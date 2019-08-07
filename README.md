@@ -3,6 +3,10 @@ the code for 51bitquant video
 
 ## Python数字货币量化交易代码
 
+## 如何爬取交易所数据
+
+## CCXT框架使用讲解
+
 ## cryptocurrency 
 
 ## trading bot
