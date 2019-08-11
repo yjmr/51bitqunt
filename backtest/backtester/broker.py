@@ -193,13 +193,11 @@ class Broker(object):
         for params in optkwargs:
             print(params)
 
-        exit()
         # 参数列表, 要优化的参数, 放在这里.
 
         cash = self.cash
         leverage = self.leverage
         commission = self.commission
-        self.optStrategies = []  # 重置为空
         for params in optkwargs:
 
             self.strategy_class.params = params
