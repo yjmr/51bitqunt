@@ -20,8 +20,8 @@ port_value = conf.get(keys,'port')
 user_value = conf.get(keys,'user')
 password_value = conf.get(keys,'password')
 db_value = conf.get(keys,'db')
-
-DBConnect.get_connect(host_value,port_value,user_value,password_value,db_value)
+conn = DBConnect() #类需要初始化
+conn.get_connect(host_value,port_value,user_value,password_value,db_value)
 
 
 
