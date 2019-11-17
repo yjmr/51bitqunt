@@ -1,14 +1,9 @@
-a = 'yj'
+
+import os
+import sys
 
 
-print(a)
-print(a[0])
-print(a.upper())
-print(a.lower())
-b = 'BTC/ETH'
-if a[0] == 'y':
-    print('hello')
-if a[0] == 'j':
-    print('world')
-
-print(b.split('/'))
+get_path = os.path.dirname(__file__)
+up_one_level = os.path.dirname(get_path)
+sys.path.append(up_one_level
+print(up_one_level)
