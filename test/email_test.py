@@ -84,7 +84,7 @@ yag = yagmail.SMTP( user="1424194274@qq.com", password="yinjun121927", host='smt
 
 # 邮箱正文
 contents = ['This is the body, and here is just text http://somedomain/image.png',
-            'You can find an audio file attached.', '/local/path/song.mp3']
+            'You can find an audio file attached.']
 
 # 发送邮件
 yag.send('yj624@foxmail.com', 'python邮件测试', contents)
