@@ -80,7 +80,7 @@ import smtplib
 import yagmail
 
 #链接邮箱服务器
-yag = yagmail.SMTP( user="1424194274@qq.com", password="yinjun121927", host='smtp.qq.com')
+yag = yagmail.SMTP( user="1424194274@qq.com", password="mlykkvjtyjhcgiba", host='smtp.qq.com')
 
 # 邮箱正文
 contents = ['This is the body, and here is just text http://somedomain/image.png',
