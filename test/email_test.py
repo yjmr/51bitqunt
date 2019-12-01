@@ -80,11 +80,18 @@ import smtplib
 import yagmail
 
 #链接邮箱服务器
-yag = yagmail.SMTP( user="1424194274@qq.com", password="mlykkvjtyjhcgiba", host='smtp.qq.com')
+
 
 # 邮箱正文
 contents = ['This is the body, and here is just text http://somedomain/image.png',
             'You can find an audio file attached.']
 
 # 发送邮件
-yag.send('yj624@foxmail.com', 'python邮件测试', contents)
+
+
+
+def get_email(send_text):
+    yag = yagmail.SMTP(user="1424194274@qq.com", password="mlykkvjtyjhcgiba", host='smtp.qq.com')
+    yag.send('yj624@foxmail.com', 'python邮件测试', send_text)
+
+get_email(contents)
