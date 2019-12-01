@@ -93,7 +93,7 @@ contents = ['This is the body, and here is just text http://somedomain/image.png
 def get_email(send_text):
     # 发邮件
     # yag = yagmail.SMTP(user="1424194274@qq.com", password="mlykkvjtyjhcgiba", host='smtp.qq.com')
-    yag = yagmail.SMTP('1424194274@qq.com')
+    yag = yagmail.SMTP('mygmailusername')
     yag.send('yj624@foxmail.com', 'python邮件测试', send_text)
 
 get_email(contents)
