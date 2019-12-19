@@ -2,7 +2,6 @@ import sys
 import configparser
 import pymysql
 import os
-import sys
 up_one_level = os.path.dirname(__file__)
 print(up_one_level)
 base_dir_path = os.path.dirname(up_one_level)
