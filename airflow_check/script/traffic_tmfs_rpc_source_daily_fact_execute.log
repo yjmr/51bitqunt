@@ -1,0 +1,1052 @@
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-11-24 11:17:52'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-11-25 04:13:56,812 - pub_module - INFO - ETL结束时间：2019-11-25 12:13:56
+2019-11-26 03:25:38,821 - pub_module - INFO - ---- IngestLogFile is not empty -----
+2019-11-26 03:25:38,823 - pub_module - INFO - select
+e.trans_date
+,e.cust_product_nskey
+,e.store_nskey
+,e.cust_id
+,e.store_id
+,e.rpc_code
+,e.pv
+,e.uv
+,e.pv_rate
+,e.tmfs_inside_visit_cnt
+,e.tmfs_outside_visit_cnt
+,e.tmfs_collect_consumer_cnt
+,e.shopcar_cnt
+,e.pay_order_buyer_cnt
+,e.pay_order_rate
+,e.pay_offtake_qty
+,e.pay_offtake_value
+,e.pay_consumer_cnt
+,e.pay_offtake_rate
+,e.direct_alipay_buyer_cnt
+,e.collect_alipay_buyer_cnt
+,e.fan_alipay_buyer_cnt
+,e.shopcar_alipay_buyer_cnt
+,e.row_id
+,e.original_store_id
+,e.sku_name
+,e.visit_code
+,e.visit_source_name
+,e.local_update_time
+,e.dw_batch_num
+,e.dw_create_time
+,e.dw_last_update_time
+,e.dw_source_sys
+,e.dw_source_table
+from
+(select d.*,row_number() over(partition by d.row_id order by d.dw_create_time desc) numaa
+from
+(select
+b.AccessDate as trans_date
+,nvl(c.cust_product_nskey,'-999998') as cust_product_nskey
+,b.store_nskey
+,b.cust_id
+,b.store_id
+,b.Id as rpc_code
+,b.PV as pv
+,b.UV as uv
+,b.PVRate as pv_rate
+,b.InStoreCount as tmfs_inside_visit_cnt
+,b.OutStoreCount as tmfs_outside_visit_cnt
+,b.CollectCount as tmfs_collect_consumer_cnt
+,b.ShopCarCount as shopcar_cnt
+,b.PayOrderBuyerCount as pay_order_buyer_cnt
+,b.PayOrderRate as pay_order_rate
+,b.aliPayOrderCount as pay_offtake_qty
+,b.alipayDealFee as pay_offtake_value
+,b.aliPayBuyerCount as pay_consumer_cnt
+,b.aliPayRate as pay_offtake_rate
+,b.DirectAliPayBuyerCount as direct_alipay_buyer_cnt
+,b.CollectAliPayBuyerCount as collect_alipay_buyer_cnt
+,b.FanAliPayBuyerCount as fan_alipay_buyer_cnt
+,b.ShopCarAliPayBuyerCount as shopcar_alipay_buyer_cnt
+,b.SId as row_id
+,b.ShopId as original_store_id
+,b.skuname as sku_name
+,b.Client as visit_code
+,b.Source as visit_source_name
+,b.Local_modified as local_update_time
+,from_unixtime(unix_timestamp()+28800,'yyyyMMddHHmmss')       as    dw_batch_num
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_create_time
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_last_update_time
+,'Tmall FS' as dw_source_sys
+,'stg.top_sycm_tb_trafficsource_from' as dw_source_table
+from
+(select  a.*,map.store_nskey,map.cust_id,map.store_id from
+(select *,row_number() over(partition by
+SId  order by Local_modified desc, dw_create_time desc) numa from stg.top_sycm_tb_trafficsource_from) a
+--left join dk_hub.tb_gtm_store_dim_map map on a.ShopId=map.original_store_id
+left join dk_hub.tb_gtm_store_dim_map map on
+( case when a.shopid='1' then '2017001'
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-11-25 11:24:08'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-11-26 04:09:43,111 - pub_module - INFO - ETL结束时间：2019-11-26 12:09:43
+2019-11-27 03:29:27,139 - pub_module - INFO - ---- IngestLogFile is not empty -----
+2019-11-27 03:29:27,139 - pub_module - INFO - select
+e.trans_date
+,e.cust_product_nskey
+,e.store_nskey
+,e.cust_id
+,e.store_id
+,e.rpc_code
+,e.pv
+,e.uv
+,e.pv_rate
+,e.tmfs_inside_visit_cnt
+,e.tmfs_outside_visit_cnt
+,e.tmfs_collect_consumer_cnt
+,e.shopcar_cnt
+,e.pay_order_buyer_cnt
+,e.pay_order_rate
+,e.pay_offtake_qty
+,e.pay_offtake_value
+,e.pay_consumer_cnt
+,e.pay_offtake_rate
+,e.direct_alipay_buyer_cnt
+,e.collect_alipay_buyer_cnt
+,e.fan_alipay_buyer_cnt
+,e.shopcar_alipay_buyer_cnt
+,e.row_id
+,e.original_store_id
+,e.sku_name
+,e.visit_code
+,e.visit_source_name
+,e.local_update_time
+,e.dw_batch_num
+,e.dw_create_time
+,e.dw_last_update_time
+,e.dw_source_sys
+,e.dw_source_table
+from
+(select d.*,row_number() over(partition by d.row_id order by d.dw_create_time desc) numaa
+from
+(select
+b.AccessDate as trans_date
+,nvl(c.cust_product_nskey,'-999998') as cust_product_nskey
+,b.store_nskey
+,b.cust_id
+,b.store_id
+,b.Id as rpc_code
+,b.PV as pv
+,b.UV as uv
+,b.PVRate as pv_rate
+,b.InStoreCount as tmfs_inside_visit_cnt
+,b.OutStoreCount as tmfs_outside_visit_cnt
+,b.CollectCount as tmfs_collect_consumer_cnt
+,b.ShopCarCount as shopcar_cnt
+,b.PayOrderBuyerCount as pay_order_buyer_cnt
+,b.PayOrderRate as pay_order_rate
+,b.aliPayOrderCount as pay_offtake_qty
+,b.alipayDealFee as pay_offtake_value
+,b.aliPayBuyerCount as pay_consumer_cnt
+,b.aliPayRate as pay_offtake_rate
+,b.DirectAliPayBuyerCount as direct_alipay_buyer_cnt
+,b.CollectAliPayBuyerCount as collect_alipay_buyer_cnt
+,b.FanAliPayBuyerCount as fan_alipay_buyer_cnt
+,b.ShopCarAliPayBuyerCount as shopcar_alipay_buyer_cnt
+,b.SId as row_id
+,b.ShopId as original_store_id
+,b.skuname as sku_name
+,b.Client as visit_code
+,b.Source as visit_source_name
+,b.Local_modified as local_update_time
+,from_unixtime(unix_timestamp()+28800,'yyyyMMddHHmmss')       as    dw_batch_num
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_create_time
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_last_update_time
+,'Tmall FS' as dw_source_sys
+,'stg.top_sycm_tb_trafficsource_from' as dw_source_table
+from
+(select  a.*,map.store_nskey,map.cust_id,map.store_id from
+(select *,row_number() over(partition by
+SId  order by Local_modified desc, dw_create_time desc) numa from stg.top_sycm_tb_trafficsource_from) a
+--left join dk_hub.tb_gtm_store_dim_map map on a.ShopId=map.original_store_id
+left join dk_hub.tb_gtm_store_dim_map map on
+( case when a.shopid='1' then '2017001'
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-11-26 11:25:38'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-11-27 04:14:55,643 - pub_module - INFO - ETL结束时间：2019-11-27 12:14:55
+2019-11-28 03:30:24,174 - pub_module - INFO - ---- IngestLogFile is not empty -----
+2019-11-28 03:30:24,174 - pub_module - INFO - select
+e.trans_date
+,e.cust_product_nskey
+,e.store_nskey
+,e.cust_id
+,e.store_id
+,e.rpc_code
+,e.pv
+,e.uv
+,e.pv_rate
+,e.tmfs_inside_visit_cnt
+,e.tmfs_outside_visit_cnt
+,e.tmfs_collect_consumer_cnt
+,e.shopcar_cnt
+,e.pay_order_buyer_cnt
+,e.pay_order_rate
+,e.pay_offtake_qty
+,e.pay_offtake_value
+,e.pay_consumer_cnt
+,e.pay_offtake_rate
+,e.direct_alipay_buyer_cnt
+,e.collect_alipay_buyer_cnt
+,e.fan_alipay_buyer_cnt
+,e.shopcar_alipay_buyer_cnt
+,e.row_id
+,e.original_store_id
+,e.sku_name
+,e.visit_code
+,e.visit_source_name
+,e.local_update_time
+,e.dw_batch_num
+,e.dw_create_time
+,e.dw_last_update_time
+,e.dw_source_sys
+,e.dw_source_table
+from
+(select d.*,row_number() over(partition by d.row_id order by d.dw_create_time desc) numaa
+from
+(select
+b.AccessDate as trans_date
+,nvl(c.cust_product_nskey,'-999998') as cust_product_nskey
+,b.store_nskey
+,b.cust_id
+,b.store_id
+,b.Id as rpc_code
+,b.PV as pv
+,b.UV as uv
+,b.PVRate as pv_rate
+,b.InStoreCount as tmfs_inside_visit_cnt
+,b.OutStoreCount as tmfs_outside_visit_cnt
+,b.CollectCount as tmfs_collect_consumer_cnt
+,b.ShopCarCount as shopcar_cnt
+,b.PayOrderBuyerCount as pay_order_buyer_cnt
+,b.PayOrderRate as pay_order_rate
+,b.aliPayOrderCount as pay_offtake_qty
+,b.alipayDealFee as pay_offtake_value
+,b.aliPayBuyerCount as pay_consumer_cnt
+,b.aliPayRate as pay_offtake_rate
+,b.DirectAliPayBuyerCount as direct_alipay_buyer_cnt
+,b.CollectAliPayBuyerCount as collect_alipay_buyer_cnt
+,b.FanAliPayBuyerCount as fan_alipay_buyer_cnt
+,b.ShopCarAliPayBuyerCount as shopcar_alipay_buyer_cnt
+,b.SId as row_id
+,b.ShopId as original_store_id
+,b.skuname as sku_name
+,b.Client as visit_code
+,b.Source as visit_source_name
+,b.Local_modified as local_update_time
+,from_unixtime(unix_timestamp()+28800,'yyyyMMddHHmmss')       as    dw_batch_num
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_create_time
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_last_update_time
+,'Tmall FS' as dw_source_sys
+,'stg.top_sycm_tb_trafficsource_from' as dw_source_table
+from
+(select  a.*,map.store_nskey,map.cust_id,map.store_id from
+(select *,row_number() over(partition by
+SId  order by Local_modified desc, dw_create_time desc) numa from stg.top_sycm_tb_trafficsource_from) a
+--left join dk_hub.tb_gtm_store_dim_map map on a.ShopId=map.original_store_id
+left join dk_hub.tb_gtm_store_dim_map map on
+( case when a.shopid='1' then '2017001'
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-11-27 11:29:27'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-11-28 04:37:22,572 - pub_module - INFO - ETL结束时间：2019-11-28 12:37:22
+2019-11-29 03:31:22,177 - pub_module - INFO - ---- IngestLogFile is not empty -----
+2019-11-29 03:31:22,178 - pub_module - INFO - select
+e.trans_date
+,e.cust_product_nskey
+,e.store_nskey
+,e.cust_id
+,e.store_id
+,e.rpc_code
+,e.pv
+,e.uv
+,e.pv_rate
+,e.tmfs_inside_visit_cnt
+,e.tmfs_outside_visit_cnt
+,e.tmfs_collect_consumer_cnt
+,e.shopcar_cnt
+,e.pay_order_buyer_cnt
+,e.pay_order_rate
+,e.pay_offtake_qty
+,e.pay_offtake_value
+,e.pay_consumer_cnt
+,e.pay_offtake_rate
+,e.direct_alipay_buyer_cnt
+,e.collect_alipay_buyer_cnt
+,e.fan_alipay_buyer_cnt
+,e.shopcar_alipay_buyer_cnt
+,e.row_id
+,e.original_store_id
+,e.sku_name
+,e.visit_code
+,e.visit_source_name
+,e.local_update_time
+,e.dw_batch_num
+,e.dw_create_time
+,e.dw_last_update_time
+,e.dw_source_sys
+,e.dw_source_table
+from
+(select d.*,row_number() over(partition by d.row_id order by d.dw_create_time desc) numaa
+from
+(select
+b.AccessDate as trans_date
+,nvl(c.cust_product_nskey,'-999998') as cust_product_nskey
+,b.store_nskey
+,b.cust_id
+,b.store_id
+,b.Id as rpc_code
+,b.PV as pv
+,b.UV as uv
+,b.PVRate as pv_rate
+,b.InStoreCount as tmfs_inside_visit_cnt
+,b.OutStoreCount as tmfs_outside_visit_cnt
+,b.CollectCount as tmfs_collect_consumer_cnt
+,b.ShopCarCount as shopcar_cnt
+,b.PayOrderBuyerCount as pay_order_buyer_cnt
+,b.PayOrderRate as pay_order_rate
+,b.aliPayOrderCount as pay_offtake_qty
+,b.alipayDealFee as pay_offtake_value
+,b.aliPayBuyerCount as pay_consumer_cnt
+,b.aliPayRate as pay_offtake_rate
+,b.DirectAliPayBuyerCount as direct_alipay_buyer_cnt
+,b.CollectAliPayBuyerCount as collect_alipay_buyer_cnt
+,b.FanAliPayBuyerCount as fan_alipay_buyer_cnt
+,b.ShopCarAliPayBuyerCount as shopcar_alipay_buyer_cnt
+,b.SId as row_id
+,b.ShopId as original_store_id
+,b.skuname as sku_name
+,b.Client as visit_code
+,b.Source as visit_source_name
+,b.Local_modified as local_update_time
+,from_unixtime(unix_timestamp()+28800,'yyyyMMddHHmmss')       as    dw_batch_num
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_create_time
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_last_update_time
+,'Tmall FS' as dw_source_sys
+,'stg.top_sycm_tb_trafficsource_from' as dw_source_table
+from
+(select  a.*,map.store_nskey,map.cust_id,map.store_id from
+(select *,row_number() over(partition by
+SId  order by Local_modified desc, dw_create_time desc) numa from stg.top_sycm_tb_trafficsource_from) a
+--left join dk_hub.tb_gtm_store_dim_map map on a.ShopId=map.original_store_id
+left join dk_hub.tb_gtm_store_dim_map map on
+( case when a.shopid='1' then '2017001'
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-11-28 11:30:24'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-11-29 04:19:18,675 - pub_module - INFO - ETL结束时间：2019-11-29 12:19:18
+2019-11-30 03:23:35,554 - pub_module - INFO - ---- IngestLogFile is not empty -----
+2019-11-30 03:23:35,555 - pub_module - INFO - select
+e.trans_date
+,e.cust_product_nskey
+,e.store_nskey
+,e.cust_id
+,e.store_id
+,e.rpc_code
+,e.pv
+,e.uv
+,e.pv_rate
+,e.tmfs_inside_visit_cnt
+,e.tmfs_outside_visit_cnt
+,e.tmfs_collect_consumer_cnt
+,e.shopcar_cnt
+,e.pay_order_buyer_cnt
+,e.pay_order_rate
+,e.pay_offtake_qty
+,e.pay_offtake_value
+,e.pay_consumer_cnt
+,e.pay_offtake_rate
+,e.direct_alipay_buyer_cnt
+,e.collect_alipay_buyer_cnt
+,e.fan_alipay_buyer_cnt
+,e.shopcar_alipay_buyer_cnt
+,e.row_id
+,e.original_store_id
+,e.sku_name
+,e.visit_code
+,e.visit_source_name
+,e.local_update_time
+,e.dw_batch_num
+,e.dw_create_time
+,e.dw_last_update_time
+,e.dw_source_sys
+,e.dw_source_table
+from
+(select d.*,row_number() over(partition by d.row_id order by d.dw_create_time desc) numaa
+from
+(select
+b.AccessDate as trans_date
+,nvl(c.cust_product_nskey,'-999998') as cust_product_nskey
+,b.store_nskey
+,b.cust_id
+,b.store_id
+,b.Id as rpc_code
+,b.PV as pv
+,b.UV as uv
+,b.PVRate as pv_rate
+,b.InStoreCount as tmfs_inside_visit_cnt
+,b.OutStoreCount as tmfs_outside_visit_cnt
+,b.CollectCount as tmfs_collect_consumer_cnt
+,b.ShopCarCount as shopcar_cnt
+,b.PayOrderBuyerCount as pay_order_buyer_cnt
+,b.PayOrderRate as pay_order_rate
+,b.aliPayOrderCount as pay_offtake_qty
+,b.alipayDealFee as pay_offtake_value
+,b.aliPayBuyerCount as pay_consumer_cnt
+,b.aliPayRate as pay_offtake_rate
+,b.DirectAliPayBuyerCount as direct_alipay_buyer_cnt
+,b.CollectAliPayBuyerCount as collect_alipay_buyer_cnt
+,b.FanAliPayBuyerCount as fan_alipay_buyer_cnt
+,b.ShopCarAliPayBuyerCount as shopcar_alipay_buyer_cnt
+,b.SId as row_id
+,b.ShopId as original_store_id
+,b.skuname as sku_name
+,b.Client as visit_code
+,b.Source as visit_source_name
+,b.Local_modified as local_update_time
+,from_unixtime(unix_timestamp()+28800,'yyyyMMddHHmmss')       as    dw_batch_num
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_create_time
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_last_update_time
+,'Tmall FS' as dw_source_sys
+,'stg.top_sycm_tb_trafficsource_from' as dw_source_table
+from
+(select  a.*,map.store_nskey,map.cust_id,map.store_id from
+(select *,row_number() over(partition by
+SId  order by Local_modified desc, dw_create_time desc) numa from stg.top_sycm_tb_trafficsource_from) a
+--left join dk_hub.tb_gtm_store_dim_map map on a.ShopId=map.original_store_id
+left join dk_hub.tb_gtm_store_dim_map map on
+( case when a.shopid='1' then '2017001'
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-11-29 11:31:22'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-11-30 04:12:10,407 - pub_module - INFO - ETL结束时间：2019-11-30 12:12:10
+2019-12-01 03:22:23,432 - pub_module - INFO - ---- IngestLogFile is not empty -----
+2019-12-01 03:22:23,432 - pub_module - INFO - select
+e.trans_date
+,e.cust_product_nskey
+,e.store_nskey
+,e.cust_id
+,e.store_id
+,e.rpc_code
+,e.pv
+,e.uv
+,e.pv_rate
+,e.tmfs_inside_visit_cnt
+,e.tmfs_outside_visit_cnt
+,e.tmfs_collect_consumer_cnt
+,e.shopcar_cnt
+,e.pay_order_buyer_cnt
+,e.pay_order_rate
+,e.pay_offtake_qty
+,e.pay_offtake_value
+,e.pay_consumer_cnt
+,e.pay_offtake_rate
+,e.direct_alipay_buyer_cnt
+,e.collect_alipay_buyer_cnt
+,e.fan_alipay_buyer_cnt
+,e.shopcar_alipay_buyer_cnt
+,e.row_id
+,e.original_store_id
+,e.sku_name
+,e.visit_code
+,e.visit_source_name
+,e.local_update_time
+,e.dw_batch_num
+,e.dw_create_time
+,e.dw_last_update_time
+,e.dw_source_sys
+,e.dw_source_table
+from
+(select d.*,row_number() over(partition by d.row_id order by d.dw_create_time desc) numaa
+from
+(select
+b.AccessDate as trans_date
+,nvl(c.cust_product_nskey,'-999998') as cust_product_nskey
+,b.store_nskey
+,b.cust_id
+,b.store_id
+,b.Id as rpc_code
+,b.PV as pv
+,b.UV as uv
+,b.PVRate as pv_rate
+,b.InStoreCount as tmfs_inside_visit_cnt
+,b.OutStoreCount as tmfs_outside_visit_cnt
+,b.CollectCount as tmfs_collect_consumer_cnt
+,b.ShopCarCount as shopcar_cnt
+,b.PayOrderBuyerCount as pay_order_buyer_cnt
+,b.PayOrderRate as pay_order_rate
+,b.aliPayOrderCount as pay_offtake_qty
+,b.alipayDealFee as pay_offtake_value
+,b.aliPayBuyerCount as pay_consumer_cnt
+,b.aliPayRate as pay_offtake_rate
+,b.DirectAliPayBuyerCount as direct_alipay_buyer_cnt
+,b.CollectAliPayBuyerCount as collect_alipay_buyer_cnt
+,b.FanAliPayBuyerCount as fan_alipay_buyer_cnt
+,b.ShopCarAliPayBuyerCount as shopcar_alipay_buyer_cnt
+,b.SId as row_id
+,b.ShopId as original_store_id
+,b.skuname as sku_name
+,b.Client as visit_code
+,b.Source as visit_source_name
+,b.Local_modified as local_update_time
+,from_unixtime(unix_timestamp()+28800,'yyyyMMddHHmmss')       as    dw_batch_num
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_create_time
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_last_update_time
+,'Tmall FS' as dw_source_sys
+,'stg.top_sycm_tb_trafficsource_from' as dw_source_table
+from
+(select  a.*,map.store_nskey,map.cust_id,map.store_id from
+(select *,row_number() over(partition by
+SId  order by Local_modified desc, dw_create_time desc) numa from stg.top_sycm_tb_trafficsource_from) a
+--left join dk_hub.tb_gtm_store_dim_map map on a.ShopId=map.original_store_id
+left join dk_hub.tb_gtm_store_dim_map map on
+( case when a.shopid='1' then '2017001'
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-11-30 11:23:35'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-12-01 04:08:52,114 - pub_module - INFO - ETL结束时间：2019-12-01 12:08:52
+2019-12-02 04:59:37,199 - pub_module - INFO - ---- IngestLogFile is not empty -----
+2019-12-02 04:59:37,200 - pub_module - INFO - select
+e.trans_date
+,e.cust_product_nskey
+,e.store_nskey
+,e.cust_id
+,e.store_id
+,e.rpc_code
+,e.pv
+,e.uv
+,e.pv_rate
+,e.tmfs_inside_visit_cnt
+,e.tmfs_outside_visit_cnt
+,e.tmfs_collect_consumer_cnt
+,e.shopcar_cnt
+,e.pay_order_buyer_cnt
+,e.pay_order_rate
+,e.pay_offtake_qty
+,e.pay_offtake_value
+,e.pay_consumer_cnt
+,e.pay_offtake_rate
+,e.direct_alipay_buyer_cnt
+,e.collect_alipay_buyer_cnt
+,e.fan_alipay_buyer_cnt
+,e.shopcar_alipay_buyer_cnt
+,e.row_id
+,e.original_store_id
+,e.sku_name
+,e.visit_code
+,e.visit_source_name
+,e.local_update_time
+,e.dw_batch_num
+,e.dw_create_time
+,e.dw_last_update_time
+,e.dw_source_sys
+,e.dw_source_table
+from
+(select d.*,row_number() over(partition by d.row_id order by d.dw_create_time desc) numaa
+from
+(select
+b.AccessDate as trans_date
+,nvl(c.cust_product_nskey,'-999998') as cust_product_nskey
+,b.store_nskey
+,b.cust_id
+,b.store_id
+,b.Id as rpc_code
+,b.PV as pv
+,b.UV as uv
+,b.PVRate as pv_rate
+,b.InStoreCount as tmfs_inside_visit_cnt
+,b.OutStoreCount as tmfs_outside_visit_cnt
+,b.CollectCount as tmfs_collect_consumer_cnt
+,b.ShopCarCount as shopcar_cnt
+,b.PayOrderBuyerCount as pay_order_buyer_cnt
+,b.PayOrderRate as pay_order_rate
+,b.aliPayOrderCount as pay_offtake_qty
+,b.alipayDealFee as pay_offtake_value
+,b.aliPayBuyerCount as pay_consumer_cnt
+,b.aliPayRate as pay_offtake_rate
+,b.DirectAliPayBuyerCount as direct_alipay_buyer_cnt
+,b.CollectAliPayBuyerCount as collect_alipay_buyer_cnt
+,b.FanAliPayBuyerCount as fan_alipay_buyer_cnt
+,b.ShopCarAliPayBuyerCount as shopcar_alipay_buyer_cnt
+,b.SId as row_id
+,b.ShopId as original_store_id
+,b.skuname as sku_name
+,b.Client as visit_code
+,b.Source as visit_source_name
+,b.Local_modified as local_update_time
+,from_unixtime(unix_timestamp()+28800,'yyyyMMddHHmmss')       as    dw_batch_num
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_create_time
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_last_update_time
+,'Tmall FS' as dw_source_sys
+,'stg.top_sycm_tb_trafficsource_from' as dw_source_table
+from
+(select  a.*,map.store_nskey,map.cust_id,map.store_id from
+(select *,row_number() over(partition by
+SId  order by Local_modified desc, dw_create_time desc) numa from stg.top_sycm_tb_trafficsource_from) a
+--left join dk_hub.tb_gtm_store_dim_map map on a.ShopId=map.original_store_id
+left join dk_hub.tb_gtm_store_dim_map map on
+( case when a.shopid='1' then '2017001'
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-12-01 11:22:23'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-12-02 05:52:14,412 - pub_module - INFO - ETL结束时间：2019-12-02 13:52:14
+2019-12-03 04:32:01,445 - pub_module - INFO - ---- IngestLogFile is not empty -----
+2019-12-03 04:32:01,445 - pub_module - INFO - select
+e.trans_date
+,e.cust_product_nskey
+,e.store_nskey
+,e.cust_id
+,e.store_id
+,e.rpc_code
+,e.pv
+,e.uv
+,e.pv_rate
+,e.tmfs_inside_visit_cnt
+,e.tmfs_outside_visit_cnt
+,e.tmfs_collect_consumer_cnt
+,e.shopcar_cnt
+,e.pay_order_buyer_cnt
+,e.pay_order_rate
+,e.pay_offtake_qty
+,e.pay_offtake_value
+,e.pay_consumer_cnt
+,e.pay_offtake_rate
+,e.direct_alipay_buyer_cnt
+,e.collect_alipay_buyer_cnt
+,e.fan_alipay_buyer_cnt
+,e.shopcar_alipay_buyer_cnt
+,e.row_id
+,e.original_store_id
+,e.sku_name
+,e.visit_code
+,e.visit_source_name
+,e.local_update_time
+,e.dw_batch_num
+,e.dw_create_time
+,e.dw_last_update_time
+,e.dw_source_sys
+,e.dw_source_table
+from
+(select d.*,row_number() over(partition by d.row_id order by d.dw_create_time desc) numaa
+from
+(select
+b.AccessDate as trans_date
+,nvl(c.cust_product_nskey,'-999998') as cust_product_nskey
+,b.store_nskey
+,b.cust_id
+,b.store_id
+,b.Id as rpc_code
+,b.PV as pv
+,b.UV as uv
+,b.PVRate as pv_rate
+,b.InStoreCount as tmfs_inside_visit_cnt
+,b.OutStoreCount as tmfs_outside_visit_cnt
+,b.CollectCount as tmfs_collect_consumer_cnt
+,b.ShopCarCount as shopcar_cnt
+,b.PayOrderBuyerCount as pay_order_buyer_cnt
+,b.PayOrderRate as pay_order_rate
+,b.aliPayOrderCount as pay_offtake_qty
+,b.alipayDealFee as pay_offtake_value
+,b.aliPayBuyerCount as pay_consumer_cnt
+,b.aliPayRate as pay_offtake_rate
+,b.DirectAliPayBuyerCount as direct_alipay_buyer_cnt
+,b.CollectAliPayBuyerCount as collect_alipay_buyer_cnt
+,b.FanAliPayBuyerCount as fan_alipay_buyer_cnt
+,b.ShopCarAliPayBuyerCount as shopcar_alipay_buyer_cnt
+,b.SId as row_id
+,b.ShopId as original_store_id
+,b.skuname as sku_name
+,b.Client as visit_code
+,b.Source as visit_source_name
+,b.Local_modified as local_update_time
+,from_unixtime(unix_timestamp()+28800,'yyyyMMddHHmmss')       as    dw_batch_num
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_create_time
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_last_update_time
+,'Tmall FS' as dw_source_sys
+,'stg.top_sycm_tb_trafficsource_from' as dw_source_table
+from
+(select  a.*,map.store_nskey,map.cust_id,map.store_id from
+(select *,row_number() over(partition by
+SId  order by Local_modified desc, dw_create_time desc) numa from stg.top_sycm_tb_trafficsource_from) a
+--left join dk_hub.tb_gtm_store_dim_map map on a.ShopId=map.original_store_id
+left join dk_hub.tb_gtm_store_dim_map map on
+( case when a.shopid='1' then '2017001'
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-12-02 12:59:37'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-12-03 05:42:01,477 - pub_module - INFO - ETL结束时间：2019-12-03 13:42:01
+2019-12-04 07:13:26,833 - pub_module - INFO - ---- IngestLogFile is not empty -----
+2019-12-04 07:13:26,833 - pub_module - INFO - select
+e.trans_date
+,e.cust_product_nskey
+,e.store_nskey
+,e.cust_id
+,e.store_id
+,e.rpc_code
+,e.pv
+,e.uv
+,e.pv_rate
+,e.tmfs_inside_visit_cnt
+,e.tmfs_outside_visit_cnt
+,e.tmfs_collect_consumer_cnt
+,e.shopcar_cnt
+,e.pay_order_buyer_cnt
+,e.pay_order_rate
+,e.pay_offtake_qty
+,e.pay_offtake_value
+,e.pay_consumer_cnt
+,e.pay_offtake_rate
+,e.direct_alipay_buyer_cnt
+,e.collect_alipay_buyer_cnt
+,e.fan_alipay_buyer_cnt
+,e.shopcar_alipay_buyer_cnt
+,e.row_id
+,e.original_store_id
+,e.sku_name
+,e.visit_code
+,e.visit_source_name
+,e.local_update_time
+,e.dw_batch_num
+,e.dw_create_time
+,e.dw_last_update_time
+,e.dw_source_sys
+,e.dw_source_table
+from
+(select d.*,row_number() over(partition by d.row_id order by d.dw_create_time desc) numaa
+from
+(select
+b.AccessDate as trans_date
+,nvl(c.cust_product_nskey,'-999998') as cust_product_nskey
+,b.store_nskey
+,b.cust_id
+,b.store_id
+,b.Id as rpc_code
+,b.PV as pv
+,b.UV as uv
+,b.PVRate as pv_rate
+,b.InStoreCount as tmfs_inside_visit_cnt
+,b.OutStoreCount as tmfs_outside_visit_cnt
+,b.CollectCount as tmfs_collect_consumer_cnt
+,b.ShopCarCount as shopcar_cnt
+,b.PayOrderBuyerCount as pay_order_buyer_cnt
+,b.PayOrderRate as pay_order_rate
+,b.aliPayOrderCount as pay_offtake_qty
+,b.alipayDealFee as pay_offtake_value
+,b.aliPayBuyerCount as pay_consumer_cnt
+,b.aliPayRate as pay_offtake_rate
+,b.DirectAliPayBuyerCount as direct_alipay_buyer_cnt
+,b.CollectAliPayBuyerCount as collect_alipay_buyer_cnt
+,b.FanAliPayBuyerCount as fan_alipay_buyer_cnt
+,b.ShopCarAliPayBuyerCount as shopcar_alipay_buyer_cnt
+,b.SId as row_id
+,b.ShopId as original_store_id
+,b.skuname as sku_name
+,b.Client as visit_code
+,b.Source as visit_source_name
+,b.Local_modified as local_update_time
+,from_unixtime(unix_timestamp()+28800,'yyyyMMddHHmmss')       as    dw_batch_num
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_create_time
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_last_update_time
+,'Tmall FS' as dw_source_sys
+,'stg.top_sycm_tb_trafficsource_from' as dw_source_table
+from
+(select  a.*,map.store_nskey,map.cust_id,map.store_id from
+(select *,row_number() over(partition by
+SId  order by Local_modified desc, dw_create_time desc) numa from stg.top_sycm_tb_trafficsource_from) a
+--left join dk_hub.tb_gtm_store_dim_map map on a.ShopId=map.original_store_id
+left join dk_hub.tb_gtm_store_dim_map map on
+( case when a.shopid='1' then '2017001'
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-12-03 12:32:01'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-12-04 08:14:42,203 - pub_module - INFO - ETL结束时间：2019-12-04 16:14:42
+2019-12-05 03:26:02,803 - pub_module - INFO - ---- IngestLogFile is not empty -----
+2019-12-05 03:26:02,804 - pub_module - INFO - select
+e.trans_date
+,e.cust_product_nskey
+,e.store_nskey
+,e.cust_id
+,e.store_id
+,e.rpc_code
+,e.pv
+,e.uv
+,e.pv_rate
+,e.tmfs_inside_visit_cnt
+,e.tmfs_outside_visit_cnt
+,e.tmfs_collect_consumer_cnt
+,e.shopcar_cnt
+,e.pay_order_buyer_cnt
+,e.pay_order_rate
+,e.pay_offtake_qty
+,e.pay_offtake_value
+,e.pay_consumer_cnt
+,e.pay_offtake_rate
+,e.direct_alipay_buyer_cnt
+,e.collect_alipay_buyer_cnt
+,e.fan_alipay_buyer_cnt
+,e.shopcar_alipay_buyer_cnt
+,e.row_id
+,e.original_store_id
+,e.sku_name
+,e.visit_code
+,e.visit_source_name
+,e.local_update_time
+,e.dw_batch_num
+,e.dw_create_time
+,e.dw_last_update_time
+,e.dw_source_sys
+,e.dw_source_table
+from
+(select d.*,row_number() over(partition by d.row_id order by d.dw_create_time desc) numaa
+from
+(select
+b.AccessDate as trans_date
+,nvl(c.cust_product_nskey,'-999998') as cust_product_nskey
+,b.store_nskey
+,b.cust_id
+,b.store_id
+,b.Id as rpc_code
+,b.PV as pv
+,b.UV as uv
+,b.PVRate as pv_rate
+,b.InStoreCount as tmfs_inside_visit_cnt
+,b.OutStoreCount as tmfs_outside_visit_cnt
+,b.CollectCount as tmfs_collect_consumer_cnt
+,b.ShopCarCount as shopcar_cnt
+,b.PayOrderBuyerCount as pay_order_buyer_cnt
+,b.PayOrderRate as pay_order_rate
+,b.aliPayOrderCount as pay_offtake_qty
+,b.alipayDealFee as pay_offtake_value
+,b.aliPayBuyerCount as pay_consumer_cnt
+,b.aliPayRate as pay_offtake_rate
+,b.DirectAliPayBuyerCount as direct_alipay_buyer_cnt
+,b.CollectAliPayBuyerCount as collect_alipay_buyer_cnt
+,b.FanAliPayBuyerCount as fan_alipay_buyer_cnt
+,b.ShopCarAliPayBuyerCount as shopcar_alipay_buyer_cnt
+,b.SId as row_id
+,b.ShopId as original_store_id
+,b.skuname as sku_name
+,b.Client as visit_code
+,b.Source as visit_source_name
+,b.Local_modified as local_update_time
+,from_unixtime(unix_timestamp()+28800,'yyyyMMddHHmmss')       as    dw_batch_num
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_create_time
+,from_unixtime(unix_timestamp()+28800,'yyyy-MM-dd HH:mm:ss')  as    dw_last_update_time
+,'Tmall FS' as dw_source_sys
+,'stg.top_sycm_tb_trafficsource_from' as dw_source_table
+from
+(select  a.*,map.store_nskey,map.cust_id,map.store_id from
+(select *,row_number() over(partition by
+SId  order by Local_modified desc, dw_create_time desc) numa from stg.top_sycm_tb_trafficsource_from) a
+--left join dk_hub.tb_gtm_store_dim_map map on a.ShopId=map.original_store_id
+left join dk_hub.tb_gtm_store_dim_map map on
+( case when a.shopid='1' then '2017001'
+       when a.shopid='2' then '2017005'
+       when a.shopid='3' then '2017003'
+       when a.shopid='4' then '2017006'
+       when a.shopid='5' then '2017009'
+       when a.shopid='6' then '2017004'
+       when a.shopid='7' then '2017002'
+       when a.shopid='8' then '2017007'
+       when a.shopid='9' then '2017008'
+       when a.shopid='19' then '2017019'
+       when a.shopid='21' then '2017021'
+       when a.shopid='22' then '2017022'
+       when a.shopid='24' then '2017024'
+       when a.shopid='25' then '2017025'
+       end )=map.store_id
+where a.numa=1 and a.dw_create_time >='2019-12-04 15:13:26'
+) b
+left join dk_hub.tb_gtm_epos_product_rpc_dk_map c on
+b.store_nskey=c.store_nskey and  b.Id=c.rpc_code
+union all
+select * from dwd.tb_bb_etraf_tmfs_rpc_source_daily_fact) as d) e where e.numaa = 1
+
+2019-12-05 04:23:28,141 - pub_module - INFO - ETL结束时间：2019-12-05 12:23:28
