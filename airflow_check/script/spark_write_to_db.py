@@ -41,6 +41,7 @@ def get_spark_sql(sc,query_sql):
 
 
 
+<<<<<<< HEAD
 def get_write_db():
     #写入数据到db
     pass
@@ -87,6 +88,36 @@ def get_write_table(sc,df,table_name,write_table_type,partition_type)
 def pub_write_to_data():
     # 要传入配置文件路径，配置的key就ok了
     pass
+=======
+def get_write_db(dw_dataframe,db_name,db_type,table_name,truncate_value="True"):
+    # pyspark写入db
+    if db_type = 'mysql':
+        dw_dataframe.write.mode("append").format("jdbc")\
+            .option('url':"jdbc:mysql://ip地址:端口号/库名称" + "?rewriteBatchedStatements=true")\
+            .option("dbtable",table_name)\
+            .option("driver", "com.mysql.cj.jdbc.Driver")\
+            .option("user","用户名") \
+            .option("password","密码")\
+            # 批量插入，写入1W行，默认是1000
+            .option("batchsize",10000)\
+            # 默认写入清空表
+            .option("truncate",truncate_value).save()
+    else:
+        dw_dataframe.write.mode("append").format("jdbc") \
+            .option("driver" ,"com.microsoft.sqlserver.jdbc.SQLServerDriver") \
+            #开启批量插入模式
+            .option('url':"jdbc:mysql://ip地址:端口号/库名称" + "?rewriteBatchedStatements=true") \
+            .option("dbtable",table_name) \
+            .option("user","用户名") \
+            .option("password","密码") \
+            #批量插入，写入1W行，默认是1000
+            .option("batchsize",10000) \
+            #默认写入清空表
+            .option("truncate",truncate_value).save()
+
+
+
+>>>>>>> 80937b83da76b4d016e6178bf3c471d6169ef757
 
 
 
