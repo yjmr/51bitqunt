@@ -39,7 +39,36 @@ def get_spark_sql(sc,query_sql):
 
 
 
-def get_write_db():
+def get_write_db(dw_dataframe,db_name,db_type,table_name,truncate_value="True"):
+    # pyspark写入db
+    if db_type = 'mysql':
+        dw_dataframe.write.mode("append").format("jdbc")\
+            .option('url':"jdbc:mysql://ip地址:端口号/库名称" + "?rewriteBatchedStatements=true")\
+            .option("dbtable",table_name)\
+            .option("driver", "com.mysql.cj.jdbc.Driver")\
+            .option("user","用户名") \
+            .option("password","密码")\
+            # 批量插入，写入1W行，默认是1000
+            .option("batchsize",10000)\
+            # 默认写入清空表
+            .option("truncate",truncate_value).save()
+    else:
+        dw_dataframe.write.mode("append").format("jdbc") \
+            .option("driver" ,"com.microsoft.sqlserver.jdbc.SQLServerDriver") \
+            #开启批量插入模式
+            .option('url':"jdbc:mysql://ip地址:端口号/库名称" + "?rewriteBatchedStatements=true") \
+            .option("dbtable",table_name) \
+            .option("user","用户名") \
+            .option("password","密码") \
+            #批量插入，写入1W行，默认是1000
+            .option("batchsize",10000) \
+            #默认写入清空表
+            .option("truncate",truncate_value).save()
+
+
+
+
+
 
 
 
