@@ -41,7 +41,7 @@ def get_spark_sql(sc,query_sql):
 
 
 
-<<<<<<< HEAD
+
 def get_write_db():
     #写入数据到db
     pass
@@ -88,7 +88,6 @@ def get_write_table(sc,df,table_name,write_table_type,partition_type)
 def pub_write_to_data():
     # 要传入配置文件路径，配置的key就ok了
     pass
-=======
 def get_write_db(dw_dataframe,db_name,db_type,table_name,truncate_value="True"):
     # pyspark写入db
     if db_type = 'mysql':
@@ -117,7 +116,7 @@ def get_write_db(dw_dataframe,db_name,db_type,table_name,truncate_value="True"):
 
 
 
->>>>>>> 80937b83da76b4d016e6178bf3c471d6169ef757
+
 
 
 
